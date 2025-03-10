@@ -7,6 +7,9 @@ class Config:
 
     @property
     def data_file_path(self) -> str:
-        return os.getenv("DATA_FILE_PATH", "../assets/profit-and-loss.json")  # Default value if not set
+        dirname = os.path.dirname(os.path.abspath(__file__))
+        parentDir = os.path.dirname(dirname)
+        file_path = os.getenv("DATA_FILE_PATH", os.path.join(parentDir,"assets", "profit-and-loss.json"))
+        return file_path    
 
 config = Config()
